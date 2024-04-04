@@ -1,3 +1,4 @@
 export const environment = {
-  baseUrl: 'http://52.66.162.214:8080/studentportal',
+  production: false,
+  baseUrl: 'http://localhost:8089/studentportal',
 };

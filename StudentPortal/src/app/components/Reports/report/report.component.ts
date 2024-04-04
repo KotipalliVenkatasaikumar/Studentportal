@@ -83,23 +83,23 @@ export class ReportComponent {
     } else {
       this.studentservice
         .generateExcel(this.startDate, this.endDate)
-        .subscribe({
-          next: (data) => {
-            console.log(data);
-            console.log(data.msg);
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Report Created Successfully...',
-              showConfirmButton: false,
-              timer: 1500,
-            });
+        .subscribe((response: Blob) => {
+          // Create a blob from the response data
+          const blob = new Blob([response], {
+            type: 'application/vnd.ms-excel',
+          });
 
-            // this.downloadFile(data.msg); 
-          },
-          error: (err) => {
-            console.error(err);
-          },
+          // For other browsers
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'report.xls';
+          document.body.appendChild(a);
+          a.click();
+
+          // Cleanup
+          window.URL.revokeObjectURL(url);
+          document.body.removeChild(a);
         });
     }
   }

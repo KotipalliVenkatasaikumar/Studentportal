@@ -51,6 +51,7 @@ export class AddStudentComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+ 
   addStudent(form: NgForm) {
     if (form.valid) {
       console.log(JSON.stringify(this.student));

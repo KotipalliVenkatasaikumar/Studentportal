@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { StudentApi } from '../api/api-paths';
 import { IDashBoardDto } from '../models/DashboardDto';
 import { IPageResponse } from '../models/PageResponse';
+import { Email } from '../models/Email';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +15,12 @@ import { IPageResponse } from '../models/PageResponse';
 export class StudentService {
   constructor(private http: HttpClient) {}
 
-  generateExcel(startDate: string, endDate?: string): Observable<any> {
-    return this.http.get<any>(
-      `${environment.baseUrl}${StudentApi.GENERATE_EXCEL}/${startDate}/${endDate}`
-    );
-  }
+
+  generateExcel(startDate: string, endDate?: string): Observable<Blob> {
+    // Include responseType: 'blob' in the options object
+    return this.http.get(`${environment.baseUrl}${StudentApi.GENERATE_EXCEL}/${startDate}/${endDate}`,{ responseType: 'blob' }
+    );
+  }
   //post
   saveStudent(student: Student): Observable<Student> {
     return this.http.post<Student>(
@@ -104,6 +106,15 @@ export class StudentService {
   getStudentsByEndDate(endDate: Date): Observable<IStudentDto[]> {
     return this.http.get<IStudentDto[]>(
       `${environment.baseUrl}${StudentApi.FILTERBYENDDATE}/${endDate}`
+    );
+  }
+
+  // sendEmail
+   sendEmail(email: Email): Observable<Student> {
+    console.log(email)
+    return this.http.post<Student>(
+      `${environment.baseUrl}${StudentApi.EMAIL}`,
+      email
     );
   }
 

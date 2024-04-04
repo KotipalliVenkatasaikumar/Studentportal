@@ -6,7 +6,7 @@
         <h4>Student Info</h4>
         <div class="row fieldset">
           <div class="input__box col-6">
-            <label class="form-label" for="form2Example1">Name</label>
+            <label class="form-label" for="form2Example1">Name<span style="color: red;">  * </span></label>
             <input
               type="text"
               id="stdName"
@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="input__box col-6">
-            <label class="form-label" for="form2Example1">Email</label>
+            <label class="form-label" for="form2Example1">Email<span style="color: red;">  * </span></label>
             <input
               type="text"
               id="email"
@@ -55,33 +55,32 @@
             </div>
           </div>
           <div class="input__box col-6">
-            <label class="form-label col-4" for="form2Example1">Contact</label>
+            <label class="form-label col-4" for="form2Example1">Contact<span style="color: red;">  * </span></label>
             <input
-              type="text"
+              type="tel"
               id="contactNo"
               class="form-control"
               name="contactNo"
               required
               placeholder="Enter Contact No"
               [(ngModel)]="student.contactNo"
-              #contactNo="ngModel"
+              #contactNoModel="ngModel"
+              pattern="[6-9][0-9]{9}"
             />
-            <div
-              *ngIf="
-                !contactNo?.valid && (contactNo?.dirty || contactNo?.touched)
-              "
-              class="error"
-            >
-              <div *ngIf="contactNo.errors?.['required']" class="text-danger">
-                contact No is required
+            <div *ngIf="contactNoModel.invalid && (contactNoModel.dirty || contactNoModel.touched)" class="error">
+              <div *ngIf="contactNoModel.errors?.['required']" class="text-danger">
+                  Contact No is required
               </div>
-              <div *ngIf="contactNo.errors?.['contactNo']" class="text-danger">
-                Invalid contact No
+              <div *ngIf="contactNoModel.errors?.['pattern']" class="text-danger">
+                  Invalid contact No. Please enter a 10-digit phone number starting with a digit between 6 and 9.
               </div>
             </div>
           </div>
+          
+          
+          
           <div class="input__box col-6">
-            <label class="form-label" for="form2Example1">Address</label>
+            <label class="form-label" for="form2Example1">Address<span style="color: red;">  * </span> </label>
             <input
               type="text"
               id="address"
@@ -109,7 +108,7 @@
         <h4 class="my-2">Education</h4>
         <div class="row fieldset">
           <div class="input__box col-6">
-            <label for="streamId" class="form-label">Stream</label><br />
+            <label for="streamId" class="form-label">Stream<span style="color: red;">  * </span> </label><br />
             <select
               id="streamId"
               class="form-select"
@@ -118,7 +117,7 @@
               [(ngModel)]="student.streamId"
               #streamId="ngModel"
               (change)="streamChange()"
-            >
+            > <option value="0">select</option>
               <option *ngFor="let stream of streams" [value]="stream.streamId">
                 {{ stream.streamName }}
               </option>
@@ -129,16 +128,16 @@
           </div>
 
           <div class="input__box col-6">
-            <label for="streamId" class="form-label">Specialization</label
+            <label for="streamId" class="form-label">Specialization<span style="color: red;">  * </span></label
             ><br />
             <select
               id="specializationId"
               class="form-select"
               name="specializationId"
-              required
               [(ngModel)]="student.specializationId"
               #specializationId="ngModel"
-            >
+              (ngModelChange)="student.specializationId = ($event === null ? 0 : $event)"
+            >  <option value="0">select</option>
               <option
                 *ngFor="let specialization of specializations"
                 [value]="specialization.specializationId"
@@ -151,7 +150,7 @@
             </div>
           </div>
           <div class="input__box col-6">
-            <label class="form-label" for="form2Example1">Year Of Pass</label>
+            <label class="form-label" for="form2Example1">Year Of Pass<span style="color: red;">  * </span></label>
             <input
               type="text"
               id="yop"
@@ -173,7 +172,7 @@
           </div>
           <div class="input__box col-6">
             <label class="form-label" for="form2Example1"
-              >Qual Percentage</label
+              >Qual Percentage<span style="color: red;">  * </span></label
             >
             <input
               type="text"
@@ -215,21 +214,18 @@
               id="referedBy"
               class="form-select"
               name="referedBy"
-              required
               [(ngModel)]="student.referedBy"
               #referedBy="ngModel"
-            >
+            ><option value="0">select</option>
               <option *ngFor="let student of students" [value]="student.stdId">
                 {{ student.stdName }} ( {{ student.contactNo }} )
               </option>
             </select>
-            <div *ngIf="">
-              <span class="text-danger">Status is required</span>
-            </div>
-          </div>
+           </div>
+           
 
           <div class="input__box col-6">
-            <label for="streamId" class="form-label">Interested In</label><br />
+            <label for="streamId" class="form-label">Interested In<span style="color: red;">  * </span></label><br />
             <select
               id="stdStatusId"
               class="form-select"
@@ -237,7 +233,7 @@
               required
               [(ngModel)]="student.interestedInId"
               #stdStatusId="ngModel"
-            >
+            ><option value="0">select</option>
               <option
                 *ngFor="let interested of interestedIn"
                 [value]="interested.interestedInId"

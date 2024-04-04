@@ -10,9 +10,12 @@ import { UserModule } from './user-module/user-module.module';
 import { AuthGuard } from './Guards/auth-guard.guard';
 import { AuthInterceptor } from './Guards/auth.interceptor';
 import { RegisterComponent } from './components/Register/register.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { EmailComponent } from './components/Email/email/email.component';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, ],
 
   imports: [
     BrowserModule,
@@ -21,6 +24,9 @@ import { RegisterComponent } from './components/Register/register.component';
     ReactiveFormsModule,
     HttpClientModule,
     UserModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatInputModule
   ],
   providers: [
     AuthGuard,

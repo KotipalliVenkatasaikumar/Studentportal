@@ -27,6 +27,7 @@ import { UsersComponent } from './components/User/users/users.component';
 import { EditUserComponent } from './components/User/edit-user/edit-user.component';
 import { AddUserComponent } from './components/User/add-user/add-user.component';
 import { RegisterComponent } from './components/Register/register.component';
+import { EmailComponent } from './components/Email/email/email.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Ensure default login redirection
@@ -57,6 +58,7 @@ const routes: Routes = [
       { path: 'addInterestedIn', component: AddInterestedInComponent },
 
       { path: 'editInterestedIn', component: EditInterestedInComponent },
+      { path: 'email', component: EmailComponent },
 
       { path: 'users', component: UsersComponent },
       { path: 'edituser', component: EditUserComponent },

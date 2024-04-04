@@ -40,6 +40,7 @@ export enum StudentApi {
   REFERENAME = ControllerPaths.STUDENT + '/referName',
   COUNT = ControllerPaths.STUDENT + '/count',
   GETBYSTDNAME = ControllerPaths.STUDENT + '/stdName',
+  EMAIL=ControllerPaths.STUDENT+'/email',
 
   FILTER = ControllerPaths.STUDENT + '/filter',
   FILTERBYSTARTDATE = ControllerPaths.STUDENT + '/filterByStartDate',

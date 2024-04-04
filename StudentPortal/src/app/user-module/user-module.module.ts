@@ -28,6 +28,7 @@ import { EditInterestedInComponent } from '../components/InterestedIn/edit-inter
 import { AddInterestedInComponent } from '../components/InterestedIn/add-interested-in/add-interested-in.component';
 import { ReportComponent } from '../components/Reports/report/report.component';
 import { HomepageComponent } from '../components/Home/homepage/homepage.component';
+import { EmailComponent } from '../components/Email/email/email.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { HomepageComponent } from '../components/Home/homepage/homepage.componen
     AddInterestedInComponent,
     ReportComponent,
     HomepageComponent,
+    EmailComponent
   ],
 
   imports: [CommonModule, RouterModule, FormsModule],
