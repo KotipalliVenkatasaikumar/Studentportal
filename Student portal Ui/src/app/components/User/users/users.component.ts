@@ -105,7 +105,7 @@ export class UsersComponent {
         },
         (err: any) => {
           console.error(err);
-          // this.getallstudents();
+          this.getallUsers();
           //  //alert("dat not found")
         }
       );

@@ -1,13 +1,15 @@
 <div class="div">
   <div [formGroup]="searchForm">
     <label for="startDate">Start Date:</label>
-    <input type="date" id="startDate" [(ngModel)]="startDate" required />
-    <div *ngIf="searchForm.get('startDate')?.touched" class="text-danger">
+    <input type="date" id="startDate" formControlName="startDate" name="startDate" />
+
+
+    <!-- <div *ngIf="searchForm.get('startDate')?.touched" class="text-danger">
       Please choose start date
-    </div>
+    </div> -->
 
     <label for="endDate">End Date:</label>
-    <input type="date" id="endDate" [(ngModel)]="endDate" required />
+    <input type="date" id="endDate" formControlName="endDate" name="endDate" required />
   </div>
 
   <div>
@@ -44,10 +46,6 @@
     </tr>
   </tbody>
 </table>
-<button
-  class="btn btn-warning  float-end"
-  [disabled]="isRecordsShown"
-  (click)="onClickGenerateExcel()"
->
+<button class="btn btn-warning  float-end" [disabled]="isRecordsShown" (click)="onClickGenerateExcel()">
   Generate Excel
 </button>

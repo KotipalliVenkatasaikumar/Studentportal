@@ -61,7 +61,7 @@ export class EditUserComponent implements OnInit {
   }
 
   isAdmin() {
-    if (this.user.isAdmin === '') {
+    if (this.user.isAdmin === 'N') {
       this.user.isAdmin = 'Y';
     } else {
       this.user.isAdmin = 'N';

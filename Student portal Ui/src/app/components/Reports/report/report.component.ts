@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IStudentDto } from 'src/app/models/StudentDto';
 import { StudentService } from 'src/app/services/student.service';
 import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -28,14 +27,15 @@ export class ReportComponent {
   searchForm!: FormGroup;
 
   filterData() {
-    console.log('hai:' + this.startDate);
-    console.log(this.endDate);
-
+  
+    this.startDate= this.searchForm.value.startDate
+    this.endDate= this.searchForm.value.endDate
+    
     if (this.startDate == null || this.endDate == null) {
       //alert('Both date fields are mandatory!');
     } else {
       this.studentservice
-        .getStudentsByDates(this.startDate, this.endDate)
+        .getStudentsByDates(this.searchForm.value.startDate, this.searchForm.value.endDate)
         .subscribe((data) => {
           console.log(data);
           this.students = data;

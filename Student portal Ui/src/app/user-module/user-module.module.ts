@@ -59,6 +59,6 @@ import { RegisterComponent } from '../components/Register/register.component';
     
   ],
 
-  imports: [CommonModule, FormsModule,RouterModule,ReactiveFormsModule],
+  imports: [CommonModule,FormsModule,RouterModule,ReactiveFormsModule],
 })
 export class UserModule {}

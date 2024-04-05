@@ -1,3 +1,4 @@
 export const environment = {
-   baseUrl: 'http://35.154.182.90:8080/studentportal',
+  production: false,
+  baseUrl: 'http://35.154.182.90:8080/studentportal',
 };
